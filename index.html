@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="#" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  
+  <body>
+    <div class="todo">
+      <div class="todo__input">
+        <input
+          class="todo__field"
+          type="text"
+          placeholder="Enter a new task..."
+        />
+        <button class="todo__add-btn">Add Task</button>
+      </div>
+
+      <div class="todo__filters">
+        <button class="todo__filter-btn" data-filter="all">All</button>
+        <button class="todo__filter-btn" data-filter="active">Active</button>
+        <button class="todo__filter-btn" data-filter="completed">Completed</button>
+      </div>
+
+      <ul class="todo__list"></ul>
+    </div>
+
+    <script src="add-list.js"></script>
+  </body>
+</html>
