@@ -113,10 +113,9 @@ button:not(.todo__filter-btn) {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 24px;
 
     @media (min-width: 768px) {
-      margin-bottom: 32px;
+      margin-bottom: 12px;
     }
 
     .todo__filter-btn {
@@ -142,11 +141,22 @@ button:not(.todo__filter-btn) {
     }
   }
 
+  .todo__counter {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--alternative-text-color);
+    margin-left: auto;
+    padding: 16px 20px;
+    @media (min-width: 768px) {
+      margin: auto;
+    }
+  }
+
   .todo__empty {
     text-align: center;
     margin-bottom: 24px;
 
-    .todo__epmty-text {
+    .todo__empty-text {
       font-size: 16px;
       color: var(--alternative-text-color);
     }

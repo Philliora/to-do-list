@@ -104,11 +104,10 @@ button:not(.todo__filter-btn):active {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 24px;
 }
 @media (min-width: 768px) {
   .todo .todo__filters {
-    margin-bottom: 32px;
+    margin-bottom: 12px;
   }
 }
 .todo .todo__filters .todo__filter-btn {
@@ -126,11 +125,23 @@ button:not(.todo__filter-btn):active {
   background: linear-gradient(135deg, var(--accent-color-blue), var(--accent-color-pink));
   border: none;
 }
+.todo .todo__counter {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: var(--alternative-text-color);
+  margin-left: auto;
+  padding: 16px 20px;
+}
+@media (min-width: 768px) {
+  .todo .todo__counter {
+    margin: auto;
+  }
+}
 .todo .todo__empty {
   text-align: center;
   margin-bottom: 24px;
 }
-.todo .todo__empty .todo__epmty-text {
+.todo .todo__empty .todo__empty-text {
   font-size: 16px;
   color: var(--alternative-text-color);
 }

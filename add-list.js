@@ -40,6 +40,7 @@ function addTask() {
 
     createTaskElement(text);
     toggleEmptyState();
+    countTasks();
     filtration(currentFilter);
     saveTasksToLS();
 
@@ -61,6 +62,7 @@ function loadTasksFromLS() {
     for (const task of tasks) {
         createTaskElement(task.text, task.completed);
     }
+    countTasks();
 }
 
 function getTasks() {
@@ -80,6 +82,8 @@ function getTasks() {
     return tasks;
 }
 
+
+
 function toggleEmptyState() {
     const hasTasks = document.querySelectorAll('.todo__list-item').length > 0;
     const emptyState = document.querySelector('.todo__empty');
@@ -88,9 +92,11 @@ function toggleEmptyState() {
 
     emptyState.classList.toggle('hidden', hasTasks);
 }
+
 function toggleCompleted(listItem) {
     listItem.classList.toggle('todo__list-item--completed');
 }
+
 function setCaretToEnd(element) {
   const range = document.createRange();
   const selection = window.getSelection();
@@ -101,6 +107,18 @@ function setCaretToEnd(element) {
   selection.removeAllRanges();
   selection.addRange(range);
 }
+
+function countTasks() {
+    const counter = document.querySelector('.todo__counter-text');
+    const allListItems = document.querySelectorAll('.todo__list-item');
+    const completedListItems = document.querySelectorAll('.todo__list-item--completed');
+    
+    let completedTask = completedListItems.length;;
+    let allTask = allListItems.length;
+    counter.textContent = `${completedTask} / ${allTask}`;
+    console.log(allListItems);
+}
+countTasks();
 
 
 
@@ -121,6 +139,7 @@ list.addEventListener('click', function(event) {
 
     if (deleteBtn) {
         listItem.remove();
+        countTasks();
         saveTasksToLS();
         return;
     }
@@ -141,6 +160,7 @@ list.addEventListener('click', function(event) {
             }
             listItem.classList.remove('todo__list-item--editing');
             toggleEmptyState();
+            countTasks();
             span.contentEditable = false;
             editBtn.textContent = 'Edit';
             saveTasksToLS();
@@ -171,7 +191,6 @@ list.addEventListener('keydown', function (event) {
         saveTasksToLS();
     }
     
-
     if (event.key === 'Escape') {
         span.innerText = span.dataset.prevText;
         span.contentEditable = false;
@@ -187,6 +206,7 @@ list.addEventListener('change', function(event) {
 
     const listItem = checkbox.closest('.todo__list-item');
     toggleCompleted(listItem);
+    countTasks();
     filtration(currentFilter);
     saveTasksToLS();
 });
@@ -234,8 +254,10 @@ function filtration(filterType) {
     } 
 }
 
+
 loadTasksFromLS();
 toggleEmptyState();
+
 
 const defaultFilterBtn = document.querySelector('.todo__filter-btn[data-filter="all"]');
 
