@@ -30,6 +30,24 @@ body {
   min-height: 100vh;
   background-color: var(--background-color);
 }
+
+button:not(.todo__filter-btn) {
+  /* тут вказую що якщо буде зміна стану, то це маж бути плавно */
+  transition: 
+  background-color 0.2s ease,
+  color 0.2s ease,
+  transform 0.1s ease,
+  box-shadow 0.1s ease;
+  
+  &:hover {
+    transform: translateY(-1px) scale(1.03);
+  }
+
+  &:active {
+    transform: translateY(0) scale(1);
+  }
+}
+
 .todo {
   max-width: 600px;
   margin: 0 auto;
@@ -88,15 +106,33 @@ body {
       border-radius: 16px;
       border: 2px solid var(--supporting-color-light);
       background: var(--background-color-light);
-      &:focus {
+      &:hover {
+        border: 2px solid var(--accent-color-darkblue);
+      }
+
+      &.todo__filter-btn--active {
         background: linear-gradient(
-          135deg,
+        135deg,
           var(--accent-color-blue),
           var(--accent-color-pink)
         );
         border: none;
       }
     }
+  }
+
+  
+  .todo__empty {
+    text-align: center;
+    margin-bottom: 24px;
+    .todo__epmty-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--alternative-text-color);
+    }
+  }
+  .todo__empty.hidden {
+    display: none;
   }
 
   .todo__list {
