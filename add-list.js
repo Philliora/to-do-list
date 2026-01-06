@@ -176,6 +176,7 @@ list.addEventListener('change', function(event) {
 
     const listItem = checkbox.closest('.todo__list-item');
     toggleCompleted(listItem);
+    filtration(currentFilter);
     saveTasksToLS();
 });
 
