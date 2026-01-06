@@ -139,6 +139,7 @@ list.addEventListener('click', function(event) {
 
     if (deleteBtn) {
         listItem.remove();
+        toggleEmptyState();
         countTasks();
         saveTasksToLS();
         return;
