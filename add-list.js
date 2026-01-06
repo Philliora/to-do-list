@@ -91,6 +91,16 @@ function toggleEmptyState() {
 function toggleCompleted(listItem) {
     listItem.classList.toggle('todo__list-item--completed');
 }
+function setCaretToEnd(element) {
+  const range = document.createRange();
+  const selection = window.getSelection();
+
+  range.selectNodeContents(element);
+  range.collapse(false);
+
+  selection.removeAllRanges();
+  selection.addRange(range);
+}
 
 
 
@@ -123,6 +133,7 @@ list.addEventListener('click', function(event) {
             listItem.classList.add('todo__list-item--editing');
             span.contentEditable = true;
             span.focus();
+            setCaretToEnd(span);
             editBtn.textContent = 'Save';
         } else {
             if (span.innerText.trim() === '') {
